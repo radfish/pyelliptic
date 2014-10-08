@@ -163,8 +163,8 @@ class _OpenSSL:
         self.BN_CTX_free.argtypes = [ctypes.c_void_p]
 
         self.EC_POINT_mul = self._lib.EC_POINT_mul
-        self.EC_POINT_mul.restype = None
-        self.EC_POINT_mul.argtypes = [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p]
+        self.EC_POINT_mul.restype = ctypes.c_int
+        self.EC_POINT_mul.argtypes = [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p]
 
         self.EC_KEY_set_private_key = self._lib.EC_KEY_set_private_key
         self.EC_KEY_set_private_key.restype = ctypes.c_int
@@ -353,7 +353,7 @@ class _OpenSSL:
         self.EVP_sha256.argtypes = []
 
         self.i2o_ECPublicKey = self._lib.i2o_ECPublicKey
-        self.i2o_ECPublicKey.restype = ctypes.c_void_p
+        self.i2o_ECPublicKey.restype = ctypes.c_int
         self.i2o_ECPublicKey.argtypes = [ctypes.c_void_p, ctypes.c_void_p]
 
         self.EVP_sha512 = self._lib.EVP_sha512
