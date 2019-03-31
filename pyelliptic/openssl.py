@@ -3,6 +3,8 @@
 
 #  Copyright (C) 2011 Yann GUIBET <yannguibet@gmail.com>
 #  See LICENSE for details.
+#
+#  Software slightly changed by Jonathan Warren <bitmessage at-symbol jonwarren.org>
 
 import sys
 import ctypes
@@ -123,6 +125,14 @@ class _OpenSSL:
         self.EC_POINT_free.restype = None
         self.EC_POINT_free.argtypes = [ctypes.c_void_p]
 
+        self.BN_CTX_free = self._lib.BN_CTX_free
+        self.BN_CTX_free.restype = None
+        self.BN_CTX_free.argtypes = [ctypes.c_void_p]
+
+        self.EC_POINT_mul = self._lib.EC_POINT_mul
+        self.EC_POINT_mul.restype = None
+        self.EC_POINT_mul.argtypes = [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p]
+
         self.EC_KEY_set_private_key = self._lib.EC_KEY_set_private_key
         self.EC_KEY_set_private_key.restype = ctypes.c_int
         self.EC_KEY_set_private_key.argtypes = [ctypes.c_void_p,
@@ -131,6 +141,10 @@ class _OpenSSL:
         self.ECDH_OpenSSL = self._lib.ECDH_OpenSSL
         self._lib.ECDH_OpenSSL.restype = ctypes.c_void_p
         self._lib.ECDH_OpenSSL.argtypes = []
+
+        self.BN_CTX_new = self._lib.BN_CTX_new
+        self._lib.BN_CTX_new.restype = ctypes.c_void_p
+        self._lib.BN_CTX_new.argtypes = []
 
         self.ECDH_set_method = self._lib.ECDH_set_method
         self._lib.ECDH_set_method.restype = ctypes.c_int
@@ -261,6 +275,10 @@ class _OpenSSL:
         self.EVP_sha256 = self._lib.EVP_sha256
         self.EVP_sha256.restype = ctypes.c_void_p
         self.EVP_sha256.argtypes = []
+
+        self.i2o_ECPublicKey = self._lib.i2o_ECPublicKey
+        self.i2o_ECPublicKey.restype = ctypes.c_void_p
+        self.i2o_ECPublicKey.argtypes = [ctypes.c_void_p, ctypes.c_void_p]
 
         self.EVP_sha512 = self._lib.EVP_sha512
         self.EVP_sha512.restype = ctypes.c_void_p
