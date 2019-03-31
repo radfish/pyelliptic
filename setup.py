@@ -2,12 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     name="pyelliptic",
-    version='1.3',
-    url='https://github.com/yann2192/pyelliptic',
+    version='2.0',
+    url='https://github.com/radfish/pyelliptic',
     license='GPL',
-    description="Python OpenSSL wrapper. For modern cryptography with ECC, AES, HMAC, Blowfish, ...",
+    description="Python OpenSSL wrapper for ECC (ECDSA, ECIES), AES, HMAC, Blowfish, ...",
     author='Yann GUIBET',
     author_email='yannguibet@gmail.com',
+    maintainer="redfish",
+    maintainer_email='redfish@galactica.pw',
     packages=find_packages(),
     classifiers=[
         'Operating System :: Unix',
@@ -15,6 +17,7 @@ setup(
         'Environment :: MacOS X',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Security :: Cryptography',
     ],
 )
