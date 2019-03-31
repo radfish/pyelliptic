@@ -414,4 +414,9 @@ except:
         try:
             OpenSSL = _OpenSSL('libcrypto.dylib')
         except:
-            raise Exception("Couldn't load OpenSSL lib ...")
+            try:
+                from os import path
+                lib_path = path.join(sys._MEIPASS, "libeay32.dll")
+                OpenSSL = _OpenSSL(lib_path)
+            except:
+                raise Exception("Couldn't load the OpenSSL library. You must install it.")
