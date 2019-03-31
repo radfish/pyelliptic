@@ -546,6 +546,6 @@ def loadOpenSSL():
             return
         except:
             pass
-    raise Exception("Couldn't find and load the OpenSSL library. You must install it.")
+    raise Exception("Failed to load OpenSSL library, searched for: " + " ".join(libdir))
 
 loadOpenSSL()
